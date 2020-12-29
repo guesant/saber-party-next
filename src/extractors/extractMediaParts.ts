@@ -18,7 +18,7 @@
 */
 
 export function extractMediaParts(mediaTxt: string) {
-  return Array.from(mediaTxt.matchAll(/(#EXTINF:\d+,)\n(.+)/g)).map(
-    ([, , i]) => i,
+  return Array.from(mediaTxt.matchAll(/(#EXTINF:\d+,)\n(.+)/g)).map(([, , i]) =>
+    i.trim(),
   );
 }

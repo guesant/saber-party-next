@@ -5,3 +5,7 @@ test("tryParse", () => {
   expect(tryParse("Test")).toBe("Test");
   expect(tryParse('"Test"')).toBe("Test");
 });
+
+test("tryParse: defaultTransformer", () => {
+  expect(tryParse("Test", (a: string) => a.toLocaleUpperCase())).toBe("TEST");
+});

@@ -21,10 +21,6 @@ export function extractExtMediaInfo(info: string): { [key: string]: any } {
     .split(",")
     .map((i) => i.split("="))
     .map(([key, value]) => [key, decodeURIComponent(value)])
-    .map(([key, value]) => [key, tryParse(value)])
-    .map(([key, value]) => [
-      key,
-      typeof value === "string" ? value.trim() : value,
-    ])
+    .map(([key, value]) => [key, tryParse(value, (i: any) => String(i).trim())])
     .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
 }

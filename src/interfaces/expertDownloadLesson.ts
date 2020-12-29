@@ -20,6 +20,7 @@ const OUTPUT_PATH =
 
 export async function expertDownloadLesson(lessonList: LessonListItem[]) {
   const { MultiSelect } = require("enquirer");
+
   const prompt = new MultiSelect({
     name: "value",
     message: "Escolha as aulas a serem baixadas:",
@@ -33,6 +34,7 @@ export async function expertDownloadLesson(lessonList: LessonListItem[]) {
       return this.map(names);
     },
   });
+
   const selectedLessons: { title: string; source: string }[] = await prompt
     .run()
     .then((answer: any) =>
@@ -51,16 +53,22 @@ export async function expertDownloadLesson(lessonList: LessonListItem[]) {
 
   for (const { title: lessonName, source } of selectedLessons) {
     const lessonId = source.match(/HLS\/([^/]*)/)![1];
+
     const medias = await axios
       .get(cdnRoutes.lessonMedias({ lessonId }))
       .then((res) => res.data)
       .then((ext) => extractExtMedias(ext));
+
     const selectedMedia =
       medias.find(({ resolution }) => resolution.includes("480")) || medias[0];
+
     const distFileVideo =
       [slug(lessonName), selectedMedia.resolution].join("-") + ".mp4";
+
     const distFileCaptions = [slug(lessonName)].join("-") + ".vtt";
+
     console.log(`Baixando ${distFileVideo}...`);
+
     await downloadLesson(
       selectedMedia.resource,
       lessonId,
