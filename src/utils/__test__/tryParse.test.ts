@@ -7,5 +7,7 @@ test("tryParse", () => {
 });
 
 test("tryParse: defaultTransformer", () => {
-  expect(tryParse("Test", (a: string) => a.toLocaleUpperCase())).toBe("TEST");
+  const upperCaseTransformer = (a: any) => String(a).toLocaleUpperCase();
+  expect(tryParse("Test", upperCaseTransformer)).toBe("TEST");
+  expect(tryParse('"Test"', upperCaseTransformer)).toBe("Test");
 });
