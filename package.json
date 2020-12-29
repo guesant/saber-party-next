@@ -1,6 +1,8 @@
 {
   "name": "saber-party-next",
   "version": "1.0.0",
+  "author": "Gabriel Rodrigues",
+  "license": "GPL-3.0",
   "scripts": {
     "test": "jest"
   },
