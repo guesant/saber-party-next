@@ -25,9 +25,9 @@ npm i ffmpeg-static
 // src/binaries.ts
 
 - import config from "config";
-+ import localFFmpeg from "ffmpeg-static";
-
 - export const FFMPEG = config.get<string>("bin.ffmpeg") || "ffmpeg";
+
++ import localFFmpeg from "ffmpeg-static";
 + export const FFMPEG = localFFmpeg;
 ```
 
