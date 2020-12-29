@@ -34,7 +34,6 @@ npm i ffmpeg-static
 ## Uso
 
 ```sh
-# Dentro de saber-party-next
 pnpx ts-node src/interfaces/cliDownloadLesson.ts
 ```
 
