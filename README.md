@@ -2,7 +2,7 @@
 
 ## Dependências
 
-- ffmpeg
+- ffmpeg (Veja: [Instalando ffmpeg localmente](#instalando-ffmpeg-localmente))
 
 ## Instalação
 
@@ -13,6 +13,22 @@ npm i -g pnpm
 git clone https://github.com/guesant/saber-party-next.git
 cd saber-party-next
 pnpm install
+```
+
+### Instalando ffmpeg localmente
+
+```sh
+npm i ffmpeg-static
+```
+
+```diff
+// src/binaries.ts
+
+- import config from "config";
++ import localFFmpeg from "ffmpeg-static";
+
+- export const FFMPEG = config.get<string>("bin.ffmpeg") || "ffmpeg";
++ export const FFMPEG = localFFmpeg;
 ```
 
 ## Uso

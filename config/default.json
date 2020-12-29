@@ -4,5 +4,8 @@
   },
   "dist": {
     "defaultOutputPath": false
+  },
+  "bin": {
+    "ffmpeg": "ffmpeg"
   }
 }

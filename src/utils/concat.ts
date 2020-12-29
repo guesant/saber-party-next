@@ -1,4 +1,5 @@
 import { execSync } from "child_process";
+import { FFMPEG } from "../binaries";
 
 export const concat = async ({
   output,
@@ -7,7 +8,7 @@ export const concat = async ({
   output: string;
   videos: string[];
 }) => {
-  execSync(`ffmpeg -i "concat:${videos.join("|")}" -c copy ${output}`, {
+  execSync(`${FFMPEG} -i "concat:${videos.join("|")}" -c copy ${output}`, {
     stdio: "ignore",
   });
 };
